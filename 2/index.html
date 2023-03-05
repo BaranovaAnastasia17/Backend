@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 2</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <style>
+         body {
+            
+            background: linear-gradient(rgba(58, 89, 136, 0.8), rgba(0,0,0,0)), url(fon8.jpg);
+        }
+
+        
+        html,
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            color: rgb(253, 254, 255);
+        }
+
+       
+        .text {
+            margin: 0 auto;
+            max-width: 1000px;
+        }
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 2%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="text">
+        0. Подключимся к серверу через putty, используя данные настройки.
+    </div>
+    <br>
+    <img src="0.png" alt="0">
+    <br>
+    <div class="text">
+        1. "GET / HTTP/1.0" - это строка запроса HTTP, которая запрашивает 
+        главную страницу сайта с помощью метода GET и версии протокола HTTP 1.0.
+    </div>
+    <br>
+    <img class="img1" src="1.png" alt="1">
+    <br>
+    <div class="text">
+        2. Это строка запроса HTTP, которая запрашивает ресурс /u52958/backend/1/ 
+        на сервере с помощью метода GET и версии протокола HTTP 1.1.
+    </div>
+    <br>
+    <img src="2.png" alt="2">
+    <br>
+    <div class="text">
+        3. Это строка запроса HTTP, которая запрашивает заголовки ответа для файла file.tar.gz 
+        в директории /u52958/backend/2/files/ на сервере с помощью метода HEAD.
+    </div>
+    <br>
+    <img src="3.png" alt="">
+    <br>
+    <div class="text">
+        4. Это строка запроса HTTP, которая запрашивает заголовки ответа для изображения
+         image.png в директории /u52958/backend/2/files/ на сервере с помощью метода HEAD.
+    </div>
+    <br>
+    <img src="4.png" alt="">
+    <br>
+    <div class="text">
+        5. Это строка запроса HTTP, которая отправляет данные comment=Hello World! на сервер в директорию /u52958/backend/2/files/ и файл index.php с помощью метода POST,
+         при этом указывается тип содержимого Content-Type: application/x-www-form-urlencoded и длина содержимого Content-Length: 20. После этого сервер выводит как ответ полученную информацию.
+    </div>
+    <br>
+    <img src="5.png" alt="">
+    <br>
+    <div class="text">
+        6. Этот HTTP запрос запрашивает файл file.tar.gz размером от 0 до 100 байт с 
+        веб-сервера, расположенного по адресу 212.192.134.20, в каталоге /u52958/backend/2/files/.
+    </div>
+    <br>
+    <img src="6.png" alt="">
+    <br>
+    <div class="text">
+        7. Запрашиваем HTTP заголовки файла index.php, тем самым узнаём его кодировку
+         расположенного в директории /u52958/backend/2/files/ по ip адреса 212.192.134.20.
+    </div>
+    <br>
+    <img src="7.png" alt="">
+</body>
+
+</html>
