@@ -1,0 +1,45 @@
+html, body {
+    height: 100vh;
+  background: rgb(58, 89, 136);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  }
+  
+  #forma{
+	border-radius: 25px;
+    margin: 30px auto;
+    margin-bottom: 30px;
+    background-color: white;
+    border: 2px solid;
+  }
+  #form1{
+    padding: 2vw;
+    padding-bottom: 0;
+  }
+
+  .form-group{
+    padding-bottom: 10px;
+  }
+  #btnend{
+    margin-top: 30px;
+    position: relative;
+    bottom:0;
+  }
+  #closebutton{
+  float: right;
+  }
+  #btnend
+  {
+  background-color: rgba(58, 89, 136, 0.815);
+    border: none;
+    padding: 15px 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    }
+  
+  
+  a:link {
+  text-decoration: none;
+  }
+  
