@@ -1,0 +1,76 @@
+Структура
+
+CREATE TABLE application (
+  id int(10) unsigned NOT NULL AUTO_INCREMENT,
+  name varchar(128) NOT NULL DEFAULT '',
+  email varchar(128) NOT NULL DEFAULT '',
+  date_of_birth DATE,
+  gender varchar(1) NOT NULL,
+  limbs int(1) unsigned NOT NULL,
+  bio TEXT NOT NULL DEFAULT '',
+  checkbox int(1) unsigned NOT NULL,
+  PRIMARY KEY (id)
+);
+CREATE TABLE app_ability(
+  id int(10) unsigned NOT NULL AUTO_INCREMENT,
+  id_app int(10) unsigned,
+  id_ab int(10) unsigned,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE ability (
+  id int(10) unsigned NOT NULL AUTO_INCREMENT,
+  title varchar(128) NOT NULL DEFAULT '',
+  PRIMARY KEY (id)
+);
+
+INSERT INTO ability (title) values ('бессмертие');
+INSERT INTO ability (title) values ('прохождение сквозь стены');
+INSERT INTO ability (title) values ('левитация');
+
+Вывод
+select * from application;
++----+-------------------------------------+-----------------------------+---------------+--------+-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| id | name                                | email                       | date_of_birth | gender | limbs | bio                                                                                                                                                               | checkbox |
++----+-------------------------------------+-----------------------------+---------------+--------+-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+
+|  1 | Анастасия                           | 17nastikbaranova@gmail.com  | 2003-06-17    | w      |     4 | ьблььльл                                                                                                                                                          |        1 |
+|  2 | ыкотоыидтоив                        | 17nastikbaranova@gmail.com  | 2023-03-24    | w      |     4 | маа                                                                                                                                                               |        1 |
+|  3 | Анастасия                           | 17nastikbaranova@gmail.com  | 2023-03-27    | m      |     2 | фывфыв                                                                                                                                                            |        1 |
+|  4 | Анастасия                           | 17nastikbaranova@gmail.com  | 2023-03-27    | w      |     2 | sthh                                                                                                                                                              |        1 |
+|  5 | НиколайДроздов                      | nikolaidrozdov123@mail.ru   | 2023-02-27    | w      |     2 | Привет                                                                                                                                                            |        1 |
+|  6 | Анастасия                           | 17nastikbaranova@gmail.com  | 2023-03-27    | w      |     2 |    gu                                                                                                                                                             |        1 |
+|  7 | Анастасия Баранова                  | 17nastikbaranova@gmail.com  | 2023-03-27    | m      |     2 |                                                                                                                                                                   |        1 |
+|  8 |  F                                  | 17nastikbaranova@gmail.com  | 2023-03-27    | m      |     2 | eedb                                                                                                                                                              |        1 |
+|  9 | Николай Дроздов                     | nikolaidrozdov123@gmail.com | 2023-03-27    | m      |     2 | Привет, кошечка я умею проходить сквозь стены, а ещё ты большая умничка, первый факт - лож                                                                        |        1 |
+| 10 |                                     | 17nastikbaranova@gmail.com  | 2023-03-27    | m      |     2 |                                                                                                                                                                   |        1 |
++----+-------------------------------------+-----------------------------+---------------+--------+-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+
+
+select * from app_ability;
++----+--------+-------+
+| id | id_app | id_ab |
++----+--------+-------+
+|  1 |      1 |     1 |
+|  2 |      1 |     2 |
+|  3 |      2 |     1 |
+|  4 |      2 |     2 |
+|  5 |      3 |     2 |
+|  6 |      3 |     3 |
+|  7 |      4 |     1 |
+|  8 |      4 |     2 |
+|  9 |      5 |     2 |
+| 10 |      6 |     2 |
+| 11 |      7 |     2 |
+| 12 |      8 |     1 |
+| 13 |      9 |     2 |
+| 14 |     10 |     1 |
++----+--------+-------+
+
+ select * from ability;
++----+------------------------------------------------+
+| id | title                                          |
++----+------------------------------------------------+
+|  1 | бессмертие                                     |
+|  2 | прохождение сквозь стены                       |
+|  3 | левитация                                      |
++----+------------------------------------------------+
+
