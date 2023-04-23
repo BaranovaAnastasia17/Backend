@@ -1,0 +1,67 @@
+структура новых таблиц
+
+CREATE TABLE application2 (
+  id int(10) unsigned NOT NULL AUTO_INCREMENT,
+  name varchar(128) NOT NULL DEFAULT '',
+  email varchar(128) NOT NULL DEFAULT '',
+  date_of_birth date DEFAULT NULL,
+  gender varchar(1) NOT NULL,
+  limbs int(1) unsigned NOT NULL,
+  bio text NOT NULL DEFAULT '',
+  checkbox int(1) unsigned NOT NULL,
+  user_id int(10) unsigned NOT NULL,
+  PRIMARY KEY (id);
+);
+
+CREATE TABLE app_ability2 (
+  id int(10) unsigned NOT NULL AUTO_INCREMENT,
+  id_app int(10) unsigned DEFAULT NULL,
+  id_ab int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (id)
+);
+CREATE TABLE ability2 (
+  id int(10) unsigned NOT NULL AUTO_INCREMENT,
+  title varchar(128) NOT NULL DEFAULT '',
+  PRIMARY KEY (id)
+);
+INSERT INTO ability2 (title) values ('бессмертие');
+INSERT INTO ability2 (title) values ('прохождение сквозь стены');
+INSERT INTO ability2 (title) values ('левитация');
+CREATE TABLE user (
+  id int(10) unsigned NOT NULL AUTO_INCREMENT,
+  user varchar(128) NOT NULL DEFAULT '',
+  pass varchar(128) NOT NULL DEFAULT '',
+  PRIMARY KEY (id)
+);
+
+вывод
+select * from application2;
++----+--------+----------------+---------------+--------+-------+--------+----------+---------+
+| id | name   | email          | date_of_birth | gender | limbs | bio    | checkbox | user_id |
++----+--------+----------------+---------------+--------+-------+--------+----------+---------+
+|  1 | asdasd | asdsad@mail.ru | 2023-04-21    | m      |     2 | asdasd |        1 |       5 |
++----+--------+----------------+---------------+--------+-------+--------+----------+---------+
+ select * from app_ability2;
++----+--------+-------+
+| id | id_app | id_ab |
++----+--------+-------+
+|  1 |      1 |     1 |
++----+--------+-------+
+select * from ability2;
++----+------------------------------------------------+
+| id | title                                          |
++----+------------------------------------------------+
+|  1 | бессмертие                                     |
+|  2 | прохождение сквозь стены                       |
+|  3 | левитация                                      |
++----+------------------------------------------------+
+select * from user;
++----+----------+----------------------------------+
+| id | user     | pass                             |
++----+----------+----------------------------------+
+|  1 | 58157143 | edfd5b77ee404375f15a94e0e1cfe225 |
+|  2 | 64933100 | fd8b0a3d3574c61dde75b483b68797ac |
+|  3 | 43724354 | 8e998ced34dfdc342e47ab1e355c4eed |
+|  4 | 06105332 | 6fe4081156acf348b8c04b0e9c3bd577 |
+|  5 | 68593789 | 32958f44f673699cca6e68ec37572282 |
++----+----------+----------------------------------+
