@@ -1,11 +1,15 @@
 <?php
-
+/**
+ * Реализовать возможность входа с паролем и логином с использованием
+ * сессии для изменения отправленных данных в предыдущей задаче,
+ * пароль и логин генерируются автоматически при первоначальной отправке формы.
+ */
 
 // Отправляем браузеру правильную кодировку,
 // файл index.php должен быть в кодировке UTF-8 без BOM.
 header('Content-Type: text/html; charset=UTF-8');
 $user = 'u52958';
-  $pass = '6486531';
+$pass = '6486531';
 $db = new PDO('mysql:host=localhost;dbname=u52958', $user, $pass,
     [PDO::ATTR_PERSISTENT => true, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]); 
 // В суперглобальном массиве $_SERVER PHP сохраняет некторые заголовки запроса HTTP
@@ -144,6 +148,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 // Иначе, если запрос был методом POST, т.е. нужно проверить данные и сохранить их в XML-файл.
 else {
+    
+    if (isset($_POST['logout']) && $_POST['logout'] == 'true') {
+        session_destroy();
+        setcookie(session_name(), '', time() - 3600);
+        setcookie('PHPSESSID', '', time() - 3600, '/');
+       
+        header('Location: ./');
+        exit();
+    }
+    
   // Проверяем ошибки.
   $errors = FALSE;
  if (empty($_POST['fio']) ) {
@@ -298,12 +312,7 @@ else {
             }
         }
 
-          foreach ($result2 as $res) {
-            
-            if($values['abilities'][$res["id_ab"]-1] = empty($res) ? '' : strip_tags($res["id_ab"])){
-              $flag=true;
-            }
-        }
+ 
 
 
           if($flag){
