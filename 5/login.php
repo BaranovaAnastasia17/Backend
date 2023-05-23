@@ -64,32 +64,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 <?php
 }
 // Иначе, если запрос был методом POST, т.е. нужно сделать авторизацию с записью логина в сессию.
+//Проверяем есть такой логин и пароль в бд, если все ок, то авторизуем пользователя
 else {
-    $user = 'u52958';
-    $pass = '6486531';
-    $db = new PDO('mysql:host=localhost;dbname=u52958', $user, $pass,
-        [PDO::ATTR_PERSISTENT => true, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]); 
       try {
       $stmt = $db->prepare("SELECT * FROM user 
       where user=?");
       $stmt -> execute([$_POST['login']]);
-      $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      $result = $stmt->fetch(PDO::FETCH_ASSOC);
       $flag=false;
-      if(password_verify($_POST['login'],$result["pass"]))
-          $flag=true;
+      if(password_verify($_POST['pass'],$result["pass"]))
+      {
+          $_SESSION['login'] = $_POST['login'];
+          
+          $_SESSION['uid'] =$result["id"];
+          header('Location: ./');
+      }
+     
+          
       }
       catch(PDOException $e){
         print('Error : ' . $e->getMessage());
         exit();
-    }
-  // TODO: Проверть есть ли такой логин и пароль в базе данных.
-  // Выдать сообщение об ошибках.
-  if(flag){
-  // Если все ок, то авторизуем пользователя.
-  $_SESSION['login'] = $_POST['login'];
-  // Записываем ID пользователя.
-  $_SESSION['uid'] =$result[0]["id"];
 
-  // Делаем перенаправление.
-  header('Location: ./');}
+    }
+
+  
+
+
+
 }
