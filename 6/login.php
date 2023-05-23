@@ -51,27 +51,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 <?php
 }
 
+//Проверяем есть такой логин и пароль в бд, если все ок, то авторизуем пользователя
 else {
       try {
       $stmt = $db->prepare("SELECT * FROM user 
       where user=?");
       $stmt -> execute([$_POST['login']]);
-      $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      $result = $stmt->fetch(PDO::FETCH_ASSOC);
       $flag=false;
-      if(password_verify($_POST['login'],$result["pass"]))
-          $flag=true;
+      if(password_verify($_POST['pass'],$result["pass"]))
+      {
+          $_SESSION['login'] = $_POST['login'];
+          
+          $_SESSION['uid'] =$result["id"];
+          header('Location: ./');
+      }
+     
+          
       }
       catch(PDOException $e){
         print('Error : ' . $e->getMessage());
         exit();
+
     }
 
-  if(flag){
-
-  $_SESSION['login'] = $_POST['login'];
-
-  $_SESSION['uid'] =$result[0]["id"];
+  
 
 
-  header('Location: ./');}
+
 }
