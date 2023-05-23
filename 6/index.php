@@ -183,10 +183,15 @@ else {
             $stmt = $db->prepare("INSERT INTO application2 (name,email,date_of_birth,gender,limbs,bio,checkbox, user_id) VALUES
     (?,?,?,?,?,?,?,?)");
             $stmt -> execute([$_POST['fio'], $_POST['email'], $_POST['date_of_birth'], $_POST['gender'], $_POST['limbs'], $_POST['bio'], $_POST['checkbox'], $id]);
-            $id = $db->lastInsertId();
+            $stmt = $db->prepare("SELECT id FROM ability");
+            $stmt->execute();
+            $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+ 
             $stmt = $db->prepare("INSERT INTO app_ability2 (id_app, id_ab) VALUES (?,?)");
-            foreach ($_POST['abilities'] as $ability) {
-                $stmt->execute([$id, $ability]);
+            foreach($res as $r){
+                if(isset($_POST['abilities'][$r["id"]-1])){
+                    $stmt->execute([$id, $r["id"]]);
+                }
             }
             
             
