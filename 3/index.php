@@ -95,10 +95,16 @@ $db = new PDO('mysql:host=localhost;dbname=u52958', $user, $pass,
   (?,?,?,?,?,?,?)");
         $stmt -> execute([$_POST['fio'], $_POST['email'], $_POST['date_of_birth'], $_POST['gender'], $_POST['limbs'], $_POST['bio'], $_POST['checkbox']]);
         $id = $db->lastInsertId();
-        $stmt = $db->prepare("INSERT INTO app_ability (id_app, id_ab) VALUES (?,?)");
-        foreach ($_POST['abilities'] as $ability) {
-            $stmt->execute([$id, $ability]);
-        }
+        $stmt = $db->prepare("SELECT id FROM ability");
+            $stmt->execute();
+            $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+ 
+            $stmt = $db->prepare("INSERT INTO app_ability2 (id_app, id_ab) VALUES (?,?)");
+            foreach($res as $r){
+                if(isset($_POST['abilities'][$r["id"]-1])){
+                    $stmt->execute([$id, $r["id"]]);
+                }
+            }
         
         
         
